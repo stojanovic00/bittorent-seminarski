@@ -4,23 +4,318 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Bittorent</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/night.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<style>
+			ul {
+				font-size: 20px;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section><h1>Bittorent</h1></section>
 				<section>
-          <section>Slide 1</section>
-          <section>Slide 2</section>
-        </section>
+					<h3>Bittorent</h3>
+				</section>
+
+				<!-- UVOD -->
+				<section>
+					<section>
+						<h3>Motivacija</h3>
+					</section>
+					<section>
+						<h4>Mane klijent server arhitekture prilikom preuzimanja velike količine podataka</h4>
+						<div>
+						<ul>
+								<li>Propusni opseg servera predstavlja usko grlo</li>
+								<li>Maskimalna brzina preuzimanja klijenta zavisi od brzine deljenja servera</li>
+								<li>Server je SPoF (ako padne server više niko ne može da preuzima podatke)</li>
+							</ul>
+						</div>
+						<div>
+							<img style="height: 300px ;" src="images/client-sever.drawio.png">
+						</div>
+					</section>
+					<section>
+						<h4>Bittorent arhitektura</h4>
+						<div>
+						<ul>
+							<li>Decentralizovan sistem</li>
+							<li>Svako ko poseduje neki deo podataka može da ga deli sa ostalima</li>
+							<li>Opterećenje propusnog opsega raspoređeno po svim članovima mreže</li>
+							<li>Maksimalno iskorišćena brzina preuzimanja, zbog mogućnosti paralelnog preuzimanja sa više izvora</li>
+						</ul>
+					</div>
+						<div><img src="images/bittorent-archdrawio.drawio.png" alt=""></div>
+					</section>
+				</section>
+
+				<!-- OSNOVNE KOMPONENTE I KONCEPTI -->
+				<section>
+					<section>
+						<h3>Osnovne komponente i učesnici</h3>
+					</section>
+					<section>
+						<h4>Delovi podataka i blokovi (pieces and blocks)</h4>
+						<div>
+						<ul>
+								<li>Podatak se deli na delove (pieces) jednakih duzina (32kB - 16MB)</li>
+								<li>Dalje, delovi se dele u blokove (blocks) jednakih duzina</li>
+								<li>Blokovi predstavljaju osnovnu jedinicu transfera podataka</li>
+								<li>Kada član poseduje čitav deo, tada može da ga deli</li>
+							</ul>
+						</div>
+						<div><img src="images/pieces-blocks.drawio.png"></div>
+					</section>
+					<section>
+						<h4>Učesnici (peers) mreže</h4>
+						<ul>
+							<li>Seederi - poseduju ceo skup podataka i samo ih dele</li>
+							<li>Leecheri - pokušavavaju da preuzmu nedostajuće delove skupa podataka</li>
+							<li>Leecheri takođe dele podatke koje poseduju </li>
+							<li>Svaki peer održava svoj peer set</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Tracker</h4>
+						<ul>
+							<li>Čuva u sebi informaciju o aktivnim članovima mreže (seeder, leecher)</li>
+							<li>Članovi mu se obraćaju prilikom pristupa mreži kao i u određenim vremenskim intervalima nakon toga kako bi ih registrovao</li>
+							<li>Da li predstavlja SPoF?</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Torrent fajl</h4>
+						<ul>
+							<li>Neophodan za deljenje skupova podataka preko Bittorent mreže</li>
+							<li>Serijalizuje se u bencoding binarni format</li>
+							<li>
+								Sadrži:
+								<ul>
+									<li><strong>Announce</strong> - URL tracker-a koji se brine o trenutnim članovima mreže</li>
+									<li>Created by -  naziv i verzija programa kojim je kreiran torrent fajl</li>
+									<li>Creation date -  datum i vreme kreairanja torrent fajla</li>
+									<li>Encoding -  encoding koji je korišćen unutar torrent fajla</li>
+									<li>Comment -  proizvoljan komentar kreatora, može sadržati opis podataka za koje je kreiran torrent fajl</li>
+									<li><strong>Info</strong> -  konkretne informacije o podataku koji se prenosi</li>
+								</ul>
+							</li>
+						</ul>
+				</section>
+				<section>
+					<h4>Info sekcija torrent fajla</h4>
+					<div>
+						<ul>
+							<li>
+								Sadrži:
+								<ul>
+									<li>Naziv podatka</li>
+									<li>Dužinu podatka u bajtovima</li>
+									<li>Md5 checksum podatka</li>
+									<li>Dužinu dela podatka (piece length)</li>
+									<li>Listu heš vrednosti svih delova podataka u pravilnom redosledu. Heš se dobija računanjem heš funkcije čiji je ulaz čitav sadržaj jednog dela podatka</li>
+								</ul>
+							</li>
+						</ul>
+					</div> 
+					<div>
+						<img src="images/piece-hash-list.drawio.png">
+					</div>
+					<p style="font-size: 20px;">Sadrži samo metapodatke!</p>	
+				</section>
+				</section>
+
+
+				<!-- KONKRETAN SLUCAJ KORISCENJA -->
+				<section>
+					<section>
+						<h3>Konkretan slučaj korišćenja</h3>
+					</section>
+					<section>
+					<h4>Koraci</h4>
+						<div >
+							<ul>
+								<li>Kreiranje torent fajla (uTorrent, qBitTorrent)</li>
+								<li>Upload torent fajla na javni direktorijum/server</li>
+								<li>Preuzimanje torrent fajla i registrovanje kod trackera</li>
+								<li>Dobavljanje peer seta</li>
+								<li>Razmena podataka (informisanje putem gossip algoritma)</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<div class=""><img src="images/bittorent-archdrawio.drawio.png" alt=""></div>
+					</section>
+				</section>
+
+				<!-- ALGORITMI ZA ODABIR DELOVA-->
+				<section>
+					<section>
+					<h3>Algoritmi za odabir delova podataka</h3>
+					</section>
+					<section>
+						<h4>Rarest first</h4>
+						<ul>
+							<li>Prioretizuje se preuzimanje najređih delova u mreži</li>
+							<li>Primenjuje se kada je mreža nedavno uspostavljena ili se pojavio nov izvor podataka</li>
+							<li>Prednosti:
+								<ul>
+									<li>Redukuje se opasnost od gubitka podataka, usled otkaza seedera</li>
+									<li>Smanjuje se opterećenje na seederu</li>
+									<li>Povećava se brzina preuzimanja</li>
+									<li>Omogućava uopšte preuzimanje podataka (kasnije...)</li>
+								</ul>
+							</li>
+							<li>
+								Kako članovi znaju koji delovi su retki?
+								<ul>
+									<li>Have poruke</li>
+									<li>Bitfield poruke</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Random first</h4>
+						<ul>
+							<li>Član pokušava da preuzme bilo koji deo</li>
+							<li>Koriste ga članovi koji su tek ušli u mrežu (imaju manje od 4 dela)</li>
+							<li>Omogućava da član započne razmenu podataka</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Strict priority polisa</h4>
+						<ul>
+							<li>Moguće preuzimanje više blokova istovremeno</li>
+							<li>Prioretizuje se preuzimanje blokova koji pripadaju istom delu</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Endgame mode</h4>
+						<ul>
+							<li>Primenjuju ga članovi kojima fali jako malo delova do kompletiranja skupa podataka</li>
+							<li>Preuzimanje može biti sporo jer su delovi retki u mreži ili su svi ostali članovi mreže zauzeti</li>
+							<li>Član broadcastuje zahteve za delovima</li>
+							<li>Čim dobije odgovor od jednog člana, obaveštava ostale članove</li>
+							<li>Performanse?</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- CHOKE -->
+				<section>
+					<section>
+						<h3>Choke algoritam</h3>
+					</section>
+					<section>
+						<h4>Problemi</h4>
+						<ul>
+							<li>Ne postoji centralni entitet koji bi koordinisao, optimizovao komunikaciju i kažnjavao nepoželjno ponašanje.</li>
+							<li>Članovima mreže niko ne brani da samo preuzimaju podatke, bez da ih dele</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Osnovni pojmovi</h4>
+						<ul>
+							<li>Free rider - član koji samo preuzima podatke, bez da ih deli</li>
+							<li>Choking - jedan član brani drugom da preuzima podatke od njega (A davi B)</li>
+							<li>Interes - član želi da preuzima podatke od nekog drugog člana (A je zainteresovan za B)</li>
+							<li>Reciprocitet - podstiče se solidarno ponašanje tako što deljenjem podataka članovi stiču mogućnost za preuzimanje podataka</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Da bi se preventovalo opterećenje mreže, na početku svako svakoga davi</li>
+							<li>
+								Kako članovi biraju koje članove će prestati da dave?
+								<ul>
+									<li>Biraju članove koji imaju veliku brzinu deljenja</li>
+									<li>Ovako sebe osiguravaju da će brzo preuzimati podatke</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Choke algoritam leechera</h4>
+						<ul>
+							<li>
+								Regular unchoke
+								<ul>
+									<li>
+										Izvršava se:
+										<ul>
+											<li>Na svakih deset sekundi</li>
+											<li>Kada neki član napusti ili uđe u peer set</li>
+											<li>Kada neki član postane zainteresovan za trenutnog člana</li>
+										</ul>
+									</li>
+									<li>Sortira sve zainteresovane članove prema brzini preuzimanja koje nude konkretnom čvoru</li>
+									<li>Prestaje da davi prva 3 u soritranoj listi</li>
+									<li>U obzir samo dolaze članovi koji su podelili bar jedan blok u poslednjih 30 sekundi</li>
+								</ul>
+							</li>
+							<li>
+								Optimistic unchoke
+								<ul>
+									<li>Izvršava se na svakih 30 sekundi</li>
+									<li>Član prestaje da davi nasumičnog člana</li>
+									<li>Ako je unchokovan član nezainteresovan, unhockuje dalje dok ne naiđe na zainteresovanog</li>
+								</ul>
+							</li>
+							<li>Maksimalna penalizacija free ridera, sem mogucnosti da budu optimistički unchokovani</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Anti-snubbing</h4>
+						<ul>
+							<li>Primenjuju ga neki torrent klijenti</li>
+							<li>Ako svi članovi dave nekog člana, on počne takođe sve da davi</li>
+							<li>Na ovaj način povećava broj optimistic unchokova i time šansu da bude unchokovan</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Choke algoritam seedera</h4>
+						<ul>
+							<li>Razlozi zašto seederi nastavljaju da dele podatke iako su preuzeli sve podatke su čisto altruističke prirode</li>
+							<li>Ipak, zbog ograničenog propusnog opsega ne mogu svima deliti podatke</li>
+							<li>
+								Izvršava se:
+								<ul>
+									<li>Na svakih deset sekundi</li>
+									<li>Kada neki član napusti ili uđe u peer set</li>
+									<li>Kada neki član postane zainteresovan za trenutnog člana</li>
+								</ul>
+							</li>
+						<li>Članovi se sortiraju po vremenu kada su poslednji put unchokovani</li>	
+						<li>
+							Prednost imaju oni sa većom brzinom deljenja 
+							<ul>
+								<li>ne sortira se po brzini preuzimanja radi sabotiranja free ridera</li>
+							</ul>
+						</li>	
+						<li>Članovi koji nikad nisu bili unchokovani se sortiraju samo po brzini deljenja</li>
+						<li>
+							20s unchokuje prva 3 u listi i jednog nasumičnog člana
+							<ul>
+								<li>Pomaže i slabije rangiranim članovima</li>
+							</ul>
+						</li>
+						<li>narednih 10s ponovo davi nasumično izabranog člana a unchokuje prva 4 u listi</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- PITANJA -->
+				<section>
+					<h3>Pitanja?</h3>
+				</section> 
 			</div>
 		</div>
 

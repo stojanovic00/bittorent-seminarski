@@ -1,0 +1,64 @@
+<mxfile host="Electron" modified="2023-11-30T23:13:27.659Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="530CBInVDfH1JjZt2Y-b" version="22.1.2" type="device">
+  <diagram name="Page-1" id="5S590Pur5kE80H2hEkbK">
+    <mxGraphModel dx="1964" dy="835" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="310" width="160" height="52.5" as="geometry" />
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="372.5" width="160" height="52.5" as="geometry" />
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fa6800;strokeColor=#C73500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="440" width="160" height="52.5" as="geometry" />
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;strokeColor=#432D57;fontColor=#ffffff;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="510" width="160" height="52.5" as="geometry" />
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-6" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="145" y="424" as="sourcePoint" />
+            <mxPoint x="245" y="424" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-7" value="Heš funkcija" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="380" width="190" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-14" value="" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document" vertex="1" parent="1">
+          <mxGeometry x="590" y="330" width="310" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-15" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="600" y="480" width="270" height="52.5" as="geometry" />
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-9" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Digest&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="AOs3bgRgVk5a-aMDwhY4-15">
+          <mxGeometry width="60" height="52.5" as="geometry" />
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-10" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Digest&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="AOs3bgRgVk5a-aMDwhY4-15">
+          <mxGeometry x="70" width="60" height="52.5" as="geometry" />
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-11" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Digest&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fa6800;strokeColor=#C73500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="AOs3bgRgVk5a-aMDwhY4-15">
+          <mxGeometry x="140" width="60" height="52.5" as="geometry" />
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-12" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Digest&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;strokeColor=#432D57;fontColor=#ffffff;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="AOs3bgRgVk5a-aMDwhY4-15">
+          <mxGeometry x="210" width="60" height="52.5" as="geometry" />
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-16" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;Info:&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="600" y="440" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-17" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;.&lt;br&gt;.&lt;br&gt;.&lt;br&gt;.&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;strokeWidth=4;perimeterSpacing=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="320" width="30" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-19" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="429.5" as="sourcePoint" />
+            <mxPoint x="570" y="429.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AOs3bgRgVk5a-aMDwhY4-20" value="Svaki deo pojedinačno" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="130" y="380" width="140" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
